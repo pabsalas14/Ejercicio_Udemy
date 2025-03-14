@@ -11,7 +11,7 @@ jobs:
         with:
           node-version: '18'
       - name: Instalar Dependecias
-        run: npm lint
+        run: npm ci
       - name: Ejecutar pruebas
         run: npm test
       - name: Build Project
