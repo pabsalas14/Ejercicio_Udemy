@@ -1,7 +1,7 @@
 name: Primer Flujo de Despliegue
 on: push
 jobs:
-  Completo:
+  Lint:
     runs-on: ubuntu-latest
     steps:
       - name: Descarga Codigo del Repositorio
@@ -10,8 +10,22 @@ jobs:
         run: npm ci
       - name: Lint
         run: npm run lint
+  Pruebas:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descarga Codigo del Repositorio
+        uses: actions/checkout@v3
+      - name: Instalar Dependecias
+        run: npm ci
       - name: Ejecutar pruebas
         run: npm run test
+  Despliegue:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descarga Codigo del Repositorio
+        uses: actions/checkout@v3
+      - name: Instalar Dependecias
+        run: npm ci
       - name: Build Project
         run: npm run build
       - name: Deploy
